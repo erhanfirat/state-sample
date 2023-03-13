@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Skor from "./Skor";
 
 function App() {
+  const [team, setTeam] = useState("Galatasaray");
+
+  const changeTeam = () => {
+    setTeam("team_" + Math.ceil(Math.random() * 999));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Skor team={team} changeTeam={changeTeam}>
+        <strong>children prop olarak gider</strong>
+        <button>Button from children</button>
+      </Skor>
+      <button onClick={changeTeam}>Takımı değiştir!</button>
     </div>
   );
 }
