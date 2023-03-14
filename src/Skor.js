@@ -14,19 +14,23 @@ const Skor = ({ team, changeTeam, children }) => {
     console.log("skor2 >", skor2);
   };
 
-  useEffect(() => {
-    console.log("Skor değeri güncellendi: ", skor);
-  }, [skor]);
+  // skor 0 -> 1
+  // useEffect(() => {
+  //   console.log("Skor değeri güncellendi: ", skor);
+
+  //   return () => {
+  //     console.log("Skor değeri güncellenecek, eski skor: ", skor);
+  //   };
+  // }, [skor]);
 
   useEffect(() => {
-    // component did update
-    console.log("PARAMETRESİZ! compnent rerender oldu: componentDidUpdate");
-  });
+    console.log("Skor Did Mount!");
 
-  useEffect(() => {
-    // component did update
-    console.log("PARAMETRELİ! compnent rerender oldu: componentDidUpdate");
-  }, [skor, team, changeTeam, children]);
+    return () => {
+      console.log("Skor Will Unmount! ");
+      alert("Skor komponenti kaldırılacaktır");
+    };
+  }, []);
 
   return (
     <div>
